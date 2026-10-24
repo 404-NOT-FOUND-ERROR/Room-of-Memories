@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>房间预览素材</title><link rel="stylesheet" href="./theme.css"><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#e8eee1}iframe{position:absolute;inset:0;width:100%;height:100%;border:0}#status{position:absolute;inset:0;display:grid;place-content:center;background:#e8eee1}</style><iframe id="preview" title="房间预览画面"></iframe><p id="status">正在准备</p><script type="module">
+import {newWorld} from './src/model.js';
+import {roomById} from './src/data.js';
+const world=newWorld(0),frame=document.querySelector('iframe'),select={value:new URLSearchParams(location.search).get('room')||'dorm'};
+const channel='memory-world-room-v1';
+function load(){document.querySelector('#status').textContent='正在准备';frame.src='./room/index.html?embedded&room='+select.value;}
+
+frame.onload=()=>{const style=frame.contentDocument.createElement('style');style.textContent='#worldLabels,#viewTools{display:none!important}';frame.contentDocument.head.append(style);document.querySelector('#status')?.remove()};
+addEventListener('message',event=>{if(event.source!==frame.contentWindow||event.origin!==location.origin||event.data?.channel!==channel)return;const id=select.value;
+if(event.data.type==='awaiting-init'){const room=world.rooms[id];const state={...room,autoTime:false,simHour:16.25,reducedMotion:true,quality:'balanced',memories:Object.fromEntries(roomById(id).memories.map(key=>[key,world.memories[key]]))};frame.contentWindow.postMessage({channel,type:'init',roomId:id,visit:{seed:room.seed,day:1,time:16.25,autoTime:false,returnCount:0},state},location.origin)}
+
+});load();
+</script>

@@ -1,0 +1,30 @@
+/* One visual language for the planet, rooms and memory pages. */
+:root {
+  --ink: #3f5149;
+  --muted: #7b887e;
+  --paper: #fcfaf2;
+  --paper-soft: #f2f3e9;
+  --green: #607c6b;
+  --green-deep: #496654;
+  --green-wash: #e8eee2;
+  --rust: #b67d60;
+  --line: #d6dece;
+  --line-strong: #bccbb8;
+  --shadow: 0 12px 40px #435a4912;
+  --radius: 18px;
+  --radius-small: 10px;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --font-body: "Segoe UI", "Microsoft YaHei", sans-serif;
+  --font-display: "Songti SC", "SimSun", Georgia, serif;
+  font-family: var(--font-body);
+  color: var(--ink);
+  color-scheme: light;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+button, input, select, textarea, summary, label.upload-label { touch-action: manipulation; }
+:where(button, input, textarea, select, summary, [tabindex]):focus-visible { outline: 2px solid var(--rust); outline-offset: 4px; }
+::selection { background: #dbe6cf; color: #3f5149; }
+* { scrollbar-width: thin; scrollbar-color: #c5d0be transparent; }
+@media(prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms!important; animation-delay: 0ms!important; transition-duration: .01ms!important; scroll-behavior: auto!important; } }
+html[data-reduced-motion=true] *, html[data-reduced-motion=true] *::before, html[data-reduced-motion=true] *::after { animation-duration: .01ms!important; animation-delay: 0ms!important; transition-duration: .01ms!important; scroll-behavior: auto!important; }

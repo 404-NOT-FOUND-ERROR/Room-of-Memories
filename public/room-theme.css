@@ -1,0 +1,19 @@
+/* The same paper, labels and controls as the music planet. */
+html[data-embedded=true], html[data-embedded=true] body { font-family: var(--font-body); color: var(--ink); background: #eaf0e7; }
+html[data-embedded=true] #panel, html[data-embedded=true] #status, html[data-embedded=true] #diary { display: none; }
+html[data-embedded=true] #viewTools { right: 22px; bottom: 22px; display: flex; gap: 5px; border: 1px solid var(--line); border-radius: 26px; padding: 5px; background: #fcfaf2dc; backdrop-filter: blur(12px); box-shadow: var(--shadow); }
+html[data-embedded=true] #viewTools .icon-button { border: 0; border-radius: 50%; box-shadow: none; width: 33px; height: 33px; background: transparent; color: var(--ink); transition: background .22s, color .22s; }
+html[data-embedded=true] #viewTools .icon-button:hover, html[data-embedded=true] #viewTools .icon-button[aria-pressed=true] { background: var(--green-wash); color: var(--green-deep); }
+html[data-embedded=true] .world-label { color: var(--ink); font-family: var(--font-body); border: 1px solid #ced8c3; border-radius: 10px; padding: 6px 9px; box-shadow: 0 4px 16px #435a4914; font-weight: 500; font-size: 10px; background: #fcfaf2e8; backdrop-filter: blur(5px); }
+html[data-embedded=true] .world-label.accent { background: #f8edd1ed; border-color: #d8c7a1; }
+html[data-embedded=true] .memory-marker { background: #fcfaf2ed; transition: background .22s, border-color .22s; }
+html[data-embedded=true] .memory-marker:hover, html[data-embedded=true] .memory-marker[data-found=true] { background: #e8eee2f2; border-color: #b7c8ae; }
+html[data-embedded=true] .memory-marker[data-active=true] { border-color: var(--green); box-shadow: 0 0 0 2px #bdcfad66; }
+html[data-embedded=true] #loading { background: #eaf0e7; color: var(--muted); font-size: 11px; font-weight: 400; }
+html[data-embedded=true] #toast { background: #415e4ff2; color: var(--paper); border-radius: 12px; padding: 12px 18px; font-size: 11px; }
+@media(max-width:700px) {
+ html[data-embedded=true] #viewTools { right: 14px; bottom: 31px; }
+ html[data-embedded=true] #viewTools .icon-button { width: 31px; height: 31px; }
+ html[data-embedded=true] .world-label:not(.memory-marker) { display: none!important; }
+ html[data-embedded=true] .memory-marker { font-size: 9px; padding: 6px 8px; }
+}
